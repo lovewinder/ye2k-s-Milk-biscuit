@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/look-up-main.css">
+  <title>look-up</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="look-up-main">
+      <div class="title">
+        <button type="button" class="btn btn-info">CSS</button>
+      </div>
+      <ul class="qa" id="CSS" style="display:none">
+
+      </ul>
+      <div class="title">
+        <button type="button" class="btn btn-info">CSSSuper</button>
+      </div>
+      <ul class="qa" id="CSSSuper" style="display:none">
+
+      </ul>
+      <div class="title"><button type="button" class="btn btn-info">JsBase</button></div>
+      <ul class="qa" id="JsBase" style="display:none">
+
+      </ul>
+      <div class="title"><button type="button" class="btn btn-info">WebApi</button></div>
+      <ul class="qa" id="WebApi" style="display:none">
+
+      </ul>
+      <div class="title"><button type="button" class="btn btn-info">Jquery</button></div>
+      <ul class="qa" id="Jquery" style="display:none">
+
+      </ul>
+      <div class="title"><button type="button" class="btn btn-info">JsSuper</button></div>
+      <ul class="qa" id="JsSuper" style="display:none">
+
+      </ul>
+      <div class="title"><button type="button" class="btn btn-info">Ajax</button></div>
+      <ul class="qa" id="ajax" style="display:none">
+
+      </ul>
+      <div class="title"><button type="button" class="btn btn-info">Git</button></div>
+      <ul class="qa" id="Git" style="display:none">
+
+      </ul>
+      <div class="title"><button type="button" class="btn btn-info">Home</button></div>
+      <ul class="home" id="home" style="display:block">
+        <!-- <li style="display:block">
+          <div class="lu-question">
+            <span class="qt-span">111</span><span class="detailInfo-span">查看</span>
+          </div>
+          <div class="lu-answer" style="display:none">
+            111
+          </div>
+        <li style="display:block">
+          <div class="lu-question">
+            <span class="qt-span">111</span><span class="detailInfo-span">查看</span>
+          </div>
+          <div class="lu-answer" style="display:none">
+              <div class="mask"></div>
+            111
+            111
+            111
+            111
+            111
+            111
+          </div>
+        <li style="display:block">
+          <div class="lu-question">
+            <span class="qt-span">111</span><span class="detailInfo-span">查看</span>
+          </div>
+          <div class="lu-answer" style="display:none">
+            111
+          </div> -->
+      </ul>
+    </div>
+  </div>
+
+  <script src="./js/jquery/jquery-1.12.4.min.js"></script>
+  <script src="./js/css-js.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/template-web.js"></script>
+  <script>
+
+  </script>
+  <script type="text/html" id="tpl">
+          {{each data v i}}
+          <li style="display:block">
+          <div class="lu-question">
+            <span class="qt-span">{{v.index + " " + v.question}}</span><span class="detailInfo-span">查看</span>
+          </div>
+    <div class="lu-answer" style="display:none">
+      <!-- <div class="mask"></div> -->
+      {{v.answer}}
+    </div>
+  </li>
+    {{/each}}
+  </script>
+  <script>
+    $(".title").on("click", function () {
+      var url = "/qa/loadContent"
+      var type = $(this).children("button").text()
+      var data = {
+        "type": type
+      }
+      console.log(type);
+      var callback = function (resultInfo) {
+        if (resultInfo.flag) {
+          // console.log(resultInfo.data);
+          var html = template("tpl", resultInfo)
+          var newhtml = html.replace(new RegExp("&#60;br&#62;", 'g'), "<br>")
+          // console.log(newhtml);
+          $(this).next().html(newhtml)
+        } else {
+          console.log("error");
+        }
+      }.bind($(this))
+      $.get(url, data, callback)
+    })
+
+    $(".title").on("click", function () {
+      var index = $(this).index();
+      console.log(index / 2);
+      // $(this).prev().slideToggle(1000);
+      $(this).parent().children("ul").eq(index / 2).stop(true)
+      $(this).parent().children("ul").eq(index / 2).slideToggle(1000);
+      $(this).parent().children("ul").eq(index / 2).siblings("ul").slideUp(1000);
+      // $(this).parent().children("ul").eq(index / 2).stop(true)
+      // $(this).parent().children("ul").eq(index / 2).fadeToggle(500);
+      // $(this).parent().children("ul").eq(index / 2).siblings("ul").fadeOut(500);
+    })
+
+
+  </script>
+</body>
+
+</html>
