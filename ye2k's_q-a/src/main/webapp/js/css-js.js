@@ -21,4 +21,12 @@
     "height": pheight - $("#dropdownMenu1").outerHeight(),
     "top": $("#dropdownMenu1").outerHeight(),
   })
+
+  $(".swiper-container").css({
+    "height": pheight
+  })
+
+  $(".changePage").css({
+    "height": pheight
+  })
 })()
