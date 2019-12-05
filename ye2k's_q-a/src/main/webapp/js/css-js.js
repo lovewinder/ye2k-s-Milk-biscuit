@@ -13,11 +13,12 @@
   })
 
   $(".title").css({
-    "height": pheight * 0.04,
+    "height": pheight * 0.05,
     // "line-height": pheight * 0.04
   })
 
   $("ul.qa").css({
-    "height": pheight * 0.64
+    "height": pheight - $("#dropdownMenu1").outerHeight(),
+    "top": $("#dropdownMenu1").outerHeight(),
   })
 })()

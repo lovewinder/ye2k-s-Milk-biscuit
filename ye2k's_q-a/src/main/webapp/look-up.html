@@ -13,76 +13,103 @@
 <body>
   <div class="container">
     <div class="look-up-main">
-      <div class="title">
-        <button type="button" class="btn btn-info">CSS</button>
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="true">
+          <span class="catalogue" style="margin-right:1px">GO</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">CSS</button>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">CSSSuper</button>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">JsBase</button>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">WebApi</button>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">Jquery</button>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">JsSuper</button>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">Ajax</button>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <button type="button" class="btn btn-info">Git</button>
+            </div>
+          </li>
+          <li>
+            <div>
+              <button type="button" class="btn btn-danger cancle" style="border-top:1px solid white">CANCLE</button>
+            </div>
+          </li>
+        </ul>
       </div>
-      <ul class="qa" id="CSS" style="display:none">
+      <div class="qa_main">
+        <ul class="qa" id="CSS" style="display:none;">
 
-      </ul>
-      <div class="title">
-        <button type="button" class="btn btn-info">CSSSuper</button>
+        </ul>
+
+        <ul class="qa" id="CSSSuper" style="display:none">
+
+        </ul>
+
+        <ul class="qa" id="JsBase" style="display:none">
+
+        </ul>
+
+        <ul class="qa" id="WebApi" style="display:none">
+
+        </ul>
+
+        <ul class="qa" id="Jquery" style="display:none">
+
+        </ul>
+
+        <ul class="qa" id="JsSuper" style="display:none">
+
+        </ul>
+
+        <ul class="qa" id="ajax" style="display:none">
+
+        </ul>
+
+        <ul class="qa" id="Git" style="display:none">
+
+        </ul>
+        <ul class="qa" id="cancle" style="display:none">
+        </ul>
       </div>
-      <ul class="qa" id="CSSSuper" style="display:none">
 
-      </ul>
-      <div class="title"><button type="button" class="btn btn-info">JsBase</button></div>
-      <ul class="qa" id="JsBase" style="display:none">
 
-      </ul>
-      <div class="title"><button type="button" class="btn btn-info">WebApi</button></div>
-      <ul class="qa" id="WebApi" style="display:none">
-
-      </ul>
-      <div class="title"><button type="button" class="btn btn-info">Jquery</button></div>
-      <ul class="qa" id="Jquery" style="display:none">
-
-      </ul>
-      <div class="title"><button type="button" class="btn btn-info">JsSuper</button></div>
-      <ul class="qa" id="JsSuper" style="display:none">
-
-      </ul>
-      <div class="title"><button type="button" class="btn btn-info">Ajax</button></div>
-      <ul class="qa" id="ajax" style="display:none">
-
-      </ul>
-      <div class="title"><button type="button" class="btn btn-info">Git</button></div>
-      <ul class="qa" id="Git" style="display:none">
-
-      </ul>
-      <div class="title"><button type="button" class="btn btn-info">Home</button></div>
-      <ul class="home" id="home" style="display:block">
-        <!-- <li style="display:block">
-          <div class="lu-question">
-            <span class="qt-span">111</span><span class="detailInfo-span">查看</span>
-          </div>
-          <div class="lu-answer" style="display:none">
-            111
-          </div>
-        <li style="display:block">
-          <div class="lu-question">
-            <span class="qt-span">111</span><span class="detailInfo-span">查看</span>
-          </div>
-          <div class="lu-answer" style="display:none">
-              <div class="mask"></div>
-            111
-            111
-            111
-            111
-            111
-            111
-          </div>
-        <li style="display:block">
-          <div class="lu-question">
-            <span class="qt-span">111</span><span class="detailInfo-span">查看</span>
-          </div>
-          <div class="lu-answer" style="display:none">
-            111
-          </div> -->
-      </ul>
     </div>
   </div>
 
   <script src="./js/jquery/jquery-1.12.4.min.js"></script>
+  <script src="./js/bootstrap/bootstrap.min.js"></script>
+
   <script src="./js/css-js.js"></script>
   <script src="./js/index.js"></script>
   <script src="./js/template-web.js"></script>
@@ -103,7 +130,11 @@
     {{/each}}
   </script>
   <script>
+
     $(".title").on("click", function () {
+      var index = $(this).parent().index();
+      console.log(index);
+
       var url = "/qa/loadContent"
       var type = $(this).children("button").text()
       var data = {
@@ -116,24 +147,27 @@
           var html = template("tpl", resultInfo)
           var newhtml = html.replace(new RegExp("&#60;br&#62;", 'g'), "<br>")
           // console.log(newhtml);
-          $(this).next().html(newhtml)
+          $(".qa").eq(index).html(newhtml)
         } else {
           console.log("error");
         }
       }.bind($(this))
       $.get(url, data, callback)
+
+      // $(this).prev().slideToggle(1000);
+      $(".qa").eq(index).stop(true)
+      console.log($(".qa").eq(index)[0]);
+      $(".qa").eq(index).fadeToggle(1000);
+      $(".qa").eq(index).siblings("ul").hide(1000);
+
+
+      $(".catalogue").text(type);
     })
 
-    $(".title").on("click", function () {
-      var index = $(this).index();
-      console.log(index / 2);
-      // $(this).prev().slideToggle(1000);
-      $(this).parent().children("ul").eq(index / 2).stop(true)
-      $(this).parent().children("ul").eq(index / 2).slideToggle(1000);
-      $(this).parent().children("ul").eq(index / 2).siblings("ul").slideUp(1000);
-      // $(this).parent().children("ul").eq(index / 2).stop(true)
-      // $(this).parent().children("ul").eq(index / 2).fadeToggle(500);
-      // $(this).parent().children("ul").eq(index / 2).siblings("ul").fadeOut(500);
+    $(".cancle").on("click", function () {
+
+      $(".qa").fadeOut(1000);
+      $(".catalogue").text("GO");
     })
 
 
