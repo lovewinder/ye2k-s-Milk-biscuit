@@ -1,6 +1,6 @@
 (function () {
   var pheight = $(document).height()
-  $(".main").css({
+  $(".answer-main").css({
     "height": pheight * 1,
     // "margin-top": pheight * 0.05,
     // "margin-bottom": pheight * 0.05
