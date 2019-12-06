@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="./css/look-up-main.css">
   <title>look-up</title>
 </head>
@@ -130,46 +130,42 @@
     {{/each}}
   </script>
   <script>
+    $(function () {
+      $(".title").on("click", function () {
+        var index = $(this).parent().index();
+        console.log(index);
 
-    $(".title").on("click", function () {
-      var index = $(this).parent().index();
-      console.log(index);
-
-      var url = "/qa/loadContent"
-      var type = $(this).children("button").text()
-      var data = {
-        "type": type
-      }
-      console.log(type);
-      var callback = function (resultInfo) {
-        if (resultInfo.flag) {
-          // console.log(resultInfo.data);
-          var html = template("tpl", resultInfo)
-          var newhtml = html.replace(new RegExp("&#60;br&#62;", 'g'), "<br>")
-          // console.log(newhtml);
-          $(".qa").eq(index).html(newhtml)
-        } else {
-          console.log("error");
+        var url = "/qa/loadContent"
+        var type = $(this).children("button").text()
+        var data = {
+          "type": type
         }
-      }.bind($(this))
-      $.get(url, data, callback)
+        console.log(type);
+        var callback = function (resultInfo) {
+          if (resultInfo.flag) {
+            // console.log(resultInfo.data);
+            var html = template("tpl", resultInfo)
+            var newhtml = html.replace(new RegExp("&#60;br&#62;", 'g'), "<br>")
+            // console.log(newhtml);
+            $(".qa").eq(index).html(newhtml)
+          } else {
+            console.log("error");
+          }
+        }.bind($(this))
+        $.get(url, data, callback)
 
-      // $(this).prev().slideToggle(1000);
-      $(".qa").eq(index).stop(true)
-      console.log($(".qa").eq(index)[0]);
-      $(".qa").eq(index).fadeToggle(1000);
-      $(".qa").eq(index).siblings("ul").hide(1000);
-
-
-      $(".catalogue").text(type);
+        // $(this).prev().slideToggle(1000);
+        $(".qa").eq(index).stop(true)
+        console.log($(".qa").eq(index)[0]);
+        $(".qa").eq(index).fadeToggle(1000);
+        $(".qa").eq(index).siblings("ul").hide(1000);
+        $(".catalogue").text(type);
+      })
+      $(".cancle").on("click", function () {
+        $(".qa").fadeOut(1000);
+        $(".catalogue").text("GO");
+      })
     })
-
-    $(".cancle").on("click", function () {
-
-      $(".qa").fadeOut(1000);
-      $(".catalogue").text("GO");
-    })
-
 
   </script>
 </body>

@@ -29,4 +29,12 @@
   $(".changePage").css({
     "height": pheight
   })
+
+  $(".aslid-mbd").css({
+    "height": pheight
+  })
+
+  $(".main-mbd").css({
+    "height": pheight
+  })
 })()

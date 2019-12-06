@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
-  <title>Document</title>
+  <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+  <title>index</title>
   <style>
     * {
       padding: 0;
@@ -116,60 +116,73 @@
 
     }
 
-
-    .box:hover {}
-
     body {
       overflow: hidden;
       background-color: #000;
+    }
+
+    .enter{
+      margin-top: 5%;
+      width: 20%;
     }
   </style>
 </head>
 
 <body>
   <ul class="box changePage">
-
     <li class="a">
       <div class="top">
         <button type="button" class="btn btn-info">My bookcase</button>
       </div>
       <div class="change-main"></div>
-      <div class="bottom"></div>
+      <div class="bottom">
+        <button class="btn btn-info enter btn-lg"></button>
+      </div>
     </li>
     <li class="b">
       <div class="top">
         <button type="button" class="btn btn-info">未完待续2</button>
       </div>
       <div class="change-main"></div>
-      <div class="bottom"></div>
+      <div class="bottom">
+        <button class="btn btn-warning enter btn-lg" style="background-color:violet"></button>
+      </div>
     </li>
     <li class="c">
       <div class="top">
         <button type="button" class="btn btn-info">what u know</button>
       </div>
       <div class="change-main"></div>
-      <div class="bottom"></div>
+      <div class="bottom">
+        <button class="btn btn-danger enter btn-lg"></button>
+      </div>
     </li>
     <li class="d">
       <div class="top">
         <button type="button" class="btn btn-info">what u say</button>
       </div>
       <div class="change-main"></div>
-      <div class="bottom"></div>
+      <div class="bottom">
+        <button class="btn btn-success enter btn-lg"></button>
+      </div>
     </li>
     <li class="e">
       <div class="top">
         <button type="button" class="btn btn-info">未完待续1</button>
       </div>
       <div class="change-main"></div>
-      <div class="bottom"></div>
+      <div class="bottom">
+        <button class="btn btn-primary enter btn-lg"></button>
+      </div>
     </li>
     <li class="f">
       <div class="top">
         <button type="button" class="btn btn-info">look up</button>
       </div>
       <div class="change-main"></div>
-      <div class="bottom"></div>
+      <div class="bottom">
+        <button class="btn btn-warning enter btn-lg"></button>
+      </div>
     </li>
   </ul>
 
@@ -184,32 +197,24 @@
         // "background-color": "red",
         "transform": "translateZ(" + 0.866 * w + "px) translateX(" + w + "px) translateX(-50%) rotateY(60deg)",
         "transform-origin": "0% 0%",
-
-
       })
 
       $(".b").css({
         // "background-color": "lime",
         "transform": "translateZ(" + 0.866 * w + "px) translateX(" + (-w) + "px) translateX(-50%) rotateY(300deg)",
         "transform-origin": "100% 100%",
-
       })
 
       $(".c").css({
         // "background-color": "blue",
         "transform": "translateZ(" + 0.866 * w + "px) translateX(0px)  translateX(-50%) translateZ(" + (-2 * 0.866 * w) + "px) rotateY(-240deg)",
         "transform-origin": "100% 100%",
-
-
       })
 
       $(".d").css({
         // "background-color": "yellow",
         "transform": "translateZ(" + 0.866 * w + "px) translateX(0px)  translateX(-50%) translateZ(" + (-2 * 0.866 * w) + "px) rotateY(180deg)",
-
-
       })
-
 
       $(".e").css({
         // "background-color": "pink",
@@ -221,9 +226,7 @@
         // "background-color": "blueviolet",
         "transform": "translateZ(" + 0.866 * w + "px)  translateX(-50%) translateZ(0px)",
         "transform-origin": "0% 0%",
-
       })
-
 
       var i = 0;
       $(".box").on("click", function (e) {
@@ -232,11 +235,20 @@
         } else {
           i--;
         }
-
         console.log("hi");
         $(this).css({
           "transform": "rotateY(" + (-60) * i + "deg)",
         })
+      })
+
+      $(".box li .enter").on("click", function (e) {
+        e.stopPropagation()
+        var index = $(this).parent().parent().index()
+        if (index == 5) {
+          location.href = "./look-up.html"
+        } else if (index == 0) {
+          location.href = "./mybookcase.html"
+        }
       })
     }) 
   </script>

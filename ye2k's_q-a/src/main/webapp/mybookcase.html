@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+  <title>MyBookCase</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    i {
+      display: inline-block;
+    }
+
+    a,
+    a:visited,
+    a:hover {
+      text-decoration: none;
+      color: white;
+    }
+
+    .aslid-mbd {
+      width: 20%;
+      background-color: #000;
+    }
+
+    .main-mbd {
+      width: 80%;
+      background-color: #ccc;
+      position: absolute;
+      left: 20%;
+      top: 0;
+      padding: 5% 7%;
+    }
+
+    .home-mbd {
+      position: relative;
+      height: 10%;
+    }
+
+    .home-mbd a {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hp {
+      text-align: center;
+    }
+
+    .hp img {
+      width: 80%;
+      border-radius: 50%;
+    }
+
+    .currentname {
+      color: white;
+      margin-top: 5%;
+    }
+
+    .sorts {
+      color: white;
+    }
+
+    .sorts .first {
+      position: relative;
+      left: -5%;
+      margin-top: 20%;
+      text-align: center;
+    }
+
+    .sorts .first li {
+      margin: 15% 0;
+    }
+
+    .sorts .second {
+      font-size: 12px;
+      text-align: left;
+      padding-left: 15%;
+    }
+
+    .sorts .second li {
+      display: none;
+    }
+
+    .main-mbd-ul li{
+      margin: 5% 0;
+    }
+
+    .chapter i{
+      color:orange;
+      display: inline-block;
+      margin-right: 3%;
+    }
+
+    .chapter button{
+      width: 100%;
+      text-align: left;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+
+    .chapter .badge{
+      float: right;
+    }
+
+    .section button{
+      width: 85%;
+      margin-left: 15%;
+      text-align: left;
+    }
+
+    .section li{
+      margin: 1% 0;
+    }
+
+    .sorts .second .current{
+      color: violet;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="aslid-mbd">
+    <div class="home-mbd"><a href="./index.html">HOME</a></div>
+    <div class="hp">
+      <div class="pic"><img src="./images/hp/ye2k.jpg" alt=""></div>
+      <div class="currentname">ye2k</div>
+    </div>
+    <div class="sorts">
+      <ul class="first">
+        <li><i class="glyphicon glyphicon-star" style="color:rgb(240, 28, 28)"></i> 通用
+          <ul class="second"></ul>
+        </li>
+        <li><i class="glyphicon glyphicon-star" style="color:skyblue"></i> 后端
+          <ul class="second">
+            <li class="btn-warning">Head First</li>
+            <li>Head Last</li>
+          </ul>
+        </li>
+        <li><i class="glyphicon glyphicon-star" style="color:lime"></i> 前端
+          <ul class="second">
+            <li>ES6</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-mbd">
+    <ul class="main-mbd-ul">
+
+      <li>
+        <div class="chapter">
+          <button class="btn btn-primary" type="button">
+            <i class="glyphicon glyphicon-leaf"></i> 策略模式 <span class="badge">3</span>
+          </button>
+        </div>
+        <ul class="section">
+          <li>
+            <button class="btn btn-success" type="button">
+              01 _ Duck Class
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-success" type="button">
+              02 _ Action Interface
+            </button>
+          </li>
+          <li>
+            <button class="btn btn-success" type="button">
+              03 _ Xxxxxx
+            </button>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="chapter">
+          <button class="btn btn-primary" type="button">
+            <i class="glyphicon glyphicon-leaf"></i> 观察者模式 <span class="badge">4</span>
+          </button>
+        </div>
+        <ul class="section">
+
+        </ul>
+      </li>
+
+      <li>
+        <div class="chapter">
+          <button class="btn btn-primary" type="button">
+            <i class="glyphicon glyphicon-leaf"></i> 装饰者模式 <span class="badge">4</span>
+          </button>
+        </div>
+        <ul class="section">
+
+        </ul>
+      </li>
+
+      <li>
+        <div class="chapter">
+          <button class="btn btn-primary" type="button">
+            <i class="glyphicon glyphicon-leaf"></i> 单件模式 <span class="badge">4</span>
+          </button>
+        </div>
+        <ul class="section">
+
+        </ul>
+      </li>
+
+      <li>
+        <div class="chapter">
+          <button class="btn btn-primary" type="button">
+            <i class="glyphicon glyphicon-leaf"></i> 命令模式 <span class="badge">4</span>
+          </button>
+        </div>
+        <ul class="section">
+
+        </ul>
+      </li>
+
+      <li>
+        <div class="chapter">
+          <button class="btn btn-primary" type="button">
+            <i class="glyphicon glyphicon-leaf"></i> 适配器模式 <span class="badge">4</span>
+          </button>
+        </div>
+        <ul class="section">
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <script src="./js/jquery/jquery-1.12.4.min.js"></script>
+  <script src="./js/css-js.js"></script>
+  <script>
+    $(".sorts .first li").on("click", function () {
+      $(this).find(".second li").slideToggle(500);
+      $(this).siblings().find(".second li").slideUp(500);
+    })
+
+    $(".sorts .second li").on("click", function (e) {
+      e.stopPropagation()
+      var data = $(this).text()
+      $.ajax({
+        url: "/mybookcase/show",
+        type: "get",
+        data: data,
+        dataType: "json",
+        success: function (resultInfo) {
+
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
