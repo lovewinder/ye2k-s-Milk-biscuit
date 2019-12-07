@@ -136,50 +136,49 @@
     </div>
     <div class="sorts">
       <ul class="first">
-        <li><i class="glyphicon glyphicon-star" style="color:rgb(240, 28, 28)"></i> 通用
+        <li value="Common"><i class="glyphicon glyphicon-star" style="color:rgb(240, 28, 28)"></i> 通用
           <ul class="second"></ul>
         </li>
-        <li><i class="glyphicon glyphicon-star" style="color:skyblue"></i> 后端
+        <li value="BackEnd"><i class="glyphicon glyphicon-star" style="color:skyblue"></i> 后端
           <ul class="second">
-            <li class="btn-warning">Head First</li>
-            <li>Head Last</li>
           </ul>
         </li>
-        <li><i class="glyphicon glyphicon-star" style="color:lime"></i> 前端
+        <li value="FrontEnd"><i class="glyphicon glyphicon-star" style="color:lime"></i> 前端
           <ul class="second">
-            <li>ES6</li>
+          </ul>
+        </li>
+        <li value=""><i class="glyphicon glyphicon-star" style="color:violet"></i> 收起
+          <ul class="second">
           </ul>
         </li>
       </ul>
     </div>
   </div>
   <div class="main-mbd">
+    <button bid="1" type="button" class="btn btn-success btn-md add-chapter" data-toggle="modal" data-target="#addChapterBtn">
+      新增
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="addChapterBtn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">new Chapter</h4>
+          </div>
+          <div class="modal-body">
+            ChapterName: <input type="text" class="newChapter">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default close-modal-addChapter" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary save-addChapter">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <ul class="main-mbd-ul">
 
-      <li>
-        <div class="chapter">
-          <button class="btn btn-primary" type="button">
-            <i class="glyphicon glyphicon-leaf"></i> 策略模式 <span class="badge">3</span>
-          </button>
-        </div>
-        <ul class="section">
-          <li>
-            <button class="btn btn-success" type="button">
-              01 _ Duck Class
-            </button>
-          </li>
-          <li>
-            <button class="btn btn-success" type="button">
-              02 _ Action Interface
-            </button>
-          </li>
-          <li>
-            <button class="btn btn-success" type="button">
-              03 _ Xxxxxx
-            </button>
-          </li>
-        </ul>
-      </li>
+
 
       <li>
         <div class="chapter">
@@ -192,73 +191,109 @@
         </ul>
       </li>
 
-      <li>
-        <div class="chapter">
-          <button class="btn btn-primary" type="button">
-            <i class="glyphicon glyphicon-leaf"></i> 装饰者模式 <span class="badge">4</span>
-          </button>
-        </div>
-        <ul class="section">
-
-        </ul>
-      </li>
-
-      <li>
-        <div class="chapter">
-          <button class="btn btn-primary" type="button">
-            <i class="glyphicon glyphicon-leaf"></i> 单件模式 <span class="badge">4</span>
-          </button>
-        </div>
-        <ul class="section">
-
-        </ul>
-      </li>
-
-      <li>
-        <div class="chapter">
-          <button class="btn btn-primary" type="button">
-            <i class="glyphicon glyphicon-leaf"></i> 命令模式 <span class="badge">4</span>
-          </button>
-        </div>
-        <ul class="section">
-
-        </ul>
-      </li>
-
-      <li>
-        <div class="chapter">
-          <button class="btn btn-primary" type="button">
-            <i class="glyphicon glyphicon-leaf"></i> 适配器模式 <span class="badge">4</span>
-          </button>
-        </div>
-        <ul class="section">
-
-        </ul>
-      </li>
     </ul>
   </div>
 
   <script src="./js/jquery/jquery-1.12.4.min.js"></script>
+  <script src="./js/bootstrap/bootstrap.min.js"></script>
+  <script src="./js/template-web.js"></script>
   <script src="./js/css-js.js"></script>
-  <script>
-    $(".sorts .first li").on("click", function () {
-      $(this).find(".second li").slideToggle(500);
-      $(this).siblings().find(".second li").slideUp(500);
-    })
+  <script type="text/html" id="tpl">
+      {{each data v i}}
+      <li bid="{{v.bid}}">{{v.bookName}}</li>
+      {{/each}}
+  </script>
 
-    $(".sorts .second li").on("click", function (e) {
-      e.stopPropagation()
-      var data = $(this).text()
+  <script type="text/html" id="tp-main">
+    {{each data v i}}
+    <li>
+      <div class="chapter">
+        <button class="btn btn-primary" type="button">
+          <i class="glyphicon glyphicon-leaf"></i> {{策略模式}} <span class="badge">3</span>
+        </button>
+      </div>
+      <ul class="section">
+        <li>
+          <button class="btn btn-success" type="button">
+            {{01 _ Duck Class}}
+            </button>
+        </li>
+        <li>
+          <button class="btn btn-success" type="button">
+            02 _ Action Interface
+            </button>
+        </li>
+        <li>
+          <button class="btn btn-success" type="button">
+            03 _ Xxxxxx
+            </button>
+        </li>
+      </ul>
+    </li>
+    {{/each}}
+  </script>
+  <script>
+
+
+    $(".main-mbd .save-addChapter").on("click", function () {
+      var bid = $(this).attr("bid")
+      console.log(this);
+      var date = new Date()
+      var newDate = date.toLocaleString("chinese")
+      var chapterName = $(".main-mbd .newChapter").val()
       $.ajax({
-        url: "/mybookcase/show",
-        type: "get",
-        data: data,
+        url: "/myBookcase/addChapterToBook",
+        type: "post",
+        data: {
+          bid: bid,
+          chapterName: chapterName,
+          createTime: newDate
+        },
         dataType: "json",
         success: function (resultInfo) {
-
+          if (resultInfo.flag) {
+            console.log("新增成功");
+            $(".close-modal-addChapter").trigger("click")
+          } else {
+            console.log("新增失败");
+          }
         }
       })
+    }.bind($(".add-chapter")))
+    $(function () {
+      $(".sorts .first>li").on("click", function () {
+        var data = $(this).attr("value")
+        $.ajax({
+          url: "/myBookcase/showBooks",
+          type: "get",
+          data: {
+            type: data,
+          },
+          dataType: "json",
+          success: function (resultInfo) {
+            if (resultInfo.flag) {
+              var html = template("tpl", resultInfo)
+              $(this).children(".second").html(html)
+            } else {
+              console.log(resultInfo.errMessage);
+            }
+          }.bind($(this)),
+          complete: function () {
+            $(this).find(".second li").slideToggle(500);
+            $(this).siblings().find(".second li").slideUp(500);
+          }.bind($(this))
+        })
+      })
+
+
+
+      $(".sorts .second").on("click", "li", function (e) {
+        e.stopPropagation()
+        $(this).addClass("btn-warning")
+        $(this).siblings().removeClass("btn-warning")
+      })
     })
+
   </script>
 </body>
 

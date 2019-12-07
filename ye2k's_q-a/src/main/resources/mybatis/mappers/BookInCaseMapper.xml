@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.y.ye2k.mapper.BookInCaseMapper">
+
+    <select id="findBooksByType" resultType="BookInCase">
+      select * from tab_bookCase where type = #{type}
+   </select>
+
+    <select id="findBooksByBid" resultType="BookCaseChapter">
+      select * from tab_bookCaseChapter where bid = #{bid}
+   </select>
+
+    <insert id="addChapterToBook">
+        insert into tab_bookCaseChapter(
+        chapterName,bid,createTime)
+          values
+        (#{chapterName},#{bid},#{createTime})
+    </insert>
+</mapper>
