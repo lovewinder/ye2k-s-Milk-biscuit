@@ -1,7 +1,6 @@
-package cn.y.ye2k.utils;
+package cn.y.ye2k.common.utils;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -43,8 +42,8 @@ public class Question_Answer {
     }
 
     public static void main(String[] args) throws IOException {
-    //    System.out.println(Question_Answer.readTxt("D:\\work_space\\ye2k's_q-a\\ye2k's_q-a\\target\\travel-1.0-SNAPSHOT\\txt\\question\\ajax.txt"));
-  //      System.out.println(Question_Answer.parseQA(Question_Answer.readTxt("D:\\work_space\\ye2k's_q-a\\ye2k's_q-a\\target\\travel-1.0-SNAPSHOT\\txt\\question\\ajax.txt")));
+        //    System.out.println(Question_Answer.readTxt("D:\\work_space\\ye2k's_q-a\\ye2k's_q-a\\target\\travel-1.0-SNAPSHOT\\txt\\question\\ajax.txt"));
+        //      System.out.println(Question_Answer.parseQA(Question_Answer.readTxt("D:\\work_space\\ye2k's_q-a\\ye2k's_q-a\\target\\travel-1.0-SNAPSHOT\\txt\\question\\ajax.txt")));
 //        String path = (new Question_Answer().getClass().getResource("/").getPath().replaceFirst("/", "").replace("classes","")+"travel-1.0-SNAPSHOT/txt/question/ajax.txt");
 //        String str = readTxt(path);
 //        Map<String, String> map = parseQA(str);

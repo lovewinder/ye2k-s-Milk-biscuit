@@ -96,30 +96,30 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
-            <version>5.1.6</version>
+        </dependency>
+        <dependency>
+            <!--日期工具类-->
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.github.abel533</groupId>
             <artifactId>mapper</artifactId>
-            <version>3.0.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
         </dependency>
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-core</artifactId>
-            <version>3.3.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-dysmsapi -->
         <dependency>
+            <!--阿里云短信服务-->
             <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
-            <version>1.0.0</version>
+            <artifactId>aliyun-java-sdk-core</artifactId>
         </dependency>
     </dependencies>
 

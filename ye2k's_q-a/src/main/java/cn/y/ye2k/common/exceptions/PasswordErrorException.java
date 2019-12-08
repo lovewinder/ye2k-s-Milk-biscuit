@@ -1,4 +1,4 @@
-package cn.y.ye2k.exception;
+package cn.y.ye2k.common.exceptions;
 
 /**
  * 密码错误异常

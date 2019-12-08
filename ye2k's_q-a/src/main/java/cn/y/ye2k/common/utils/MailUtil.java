@@ -1,4 +1,4 @@
-package cn.y.ye2k.utils;
+package cn.y.ye2k.common.utils;
 
 import org.apache.commons.mail.HtmlEmail;
 
@@ -37,7 +37,7 @@ public final class MailUtil {
     public static void main(String[] args) throws Exception {
         String toEmail = "529129461@qq.com";
         String emailMsg = "<h2>恭喜您！注册成功！</h2><a href='http://localhost:8080/userServlet?requestMethod=active'>请点击此处激活账号</a>";
-        sendMail(toEmail,emailMsg);
+        sendMail(toEmail, emailMsg);
         System.out.println("发送成功。。。");
     }
 }

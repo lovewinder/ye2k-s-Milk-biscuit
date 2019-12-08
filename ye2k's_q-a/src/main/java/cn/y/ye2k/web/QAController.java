@@ -2,15 +2,17 @@ package cn.y.ye2k.web;
 
 import cn.y.ye2k.pojo.QA;
 import cn.y.ye2k.pojo.ResultInfo;
-import cn.y.ye2k.utils.Question_Answer;
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.y.ye2k.common.utils.Question_Answer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("qa")

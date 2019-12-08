@@ -35,7 +35,12 @@
         <commons-io.version>1.3.2</commons-io.version>
         <commons-email.version>1.4</commons-email.version>
         <jedis.version>2.9.0</jedis.version>
+        <sms.version>4.1.1</sms.version>
+        <pagehelper.version>5.1.6</pagehelper.version>
         <spring-data-redis.version>2.0.7.RELEASE</spring-data-redis.version>
+        <mapper.version>3.0.1</mapper.version>
+        <lombok.version>1.16.10</lombok.version>
+        <lucene-highlighter.version>4.10.2</lucene-highlighter.version>
     </properties>
 
     <dependencyManagement>
@@ -110,6 +115,13 @@
                 <version>${mysql.version}</version>
             </dependency>
 
+            <!--Redis缓存集成-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
             <!-- 日志 -->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -156,6 +168,11 @@
                 <version>${jsp-api.version}</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
 
             <!-- 时间操作组件 -->
             <dependency>
@@ -175,18 +192,21 @@
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
             </dependency>
+
             <!-- dom4j -->
             <dependency>
                 <groupId>dom4j</groupId>
                 <artifactId>dom4j</artifactId>
                 <version>${dom4j.version}</version>
             </dependency>
+
             <!-- dbutils包 -->
             <dependency>
                 <groupId>commons-dbutils</groupId>
                 <artifactId>commons-dbutils</artifactId>
                 <version>${dbutils.version}</version>
             </dependency>
+
             <!-- c3p0包 -->
             <dependency>
                 <groupId>c3p0</groupId>
@@ -200,42 +220,61 @@
                 <artifactId>lucene-core</artifactId>
                 <version>${lucene.version}</version>
             </dependency>
+
             <!-- Lucene的查询解析器 -->
             <dependency>
                 <groupId>org.apache.lucene</groupId>
                 <artifactId>lucene-queryparser</artifactId>
                 <version>${lucene.version}</version>
             </dependency>
+
             <!-- lucene的默认分词器库 -->
             <dependency>
                 <groupId>org.apache.lucene</groupId>
                 <artifactId>lucene-analyzers-common</artifactId>
                 <version>${lucene.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.github.abel533</groupId>
+                <artifactId>mapper</artifactId>
+                <version>${mapper.version}</version>
+            </dependency>
+
+            <!--lombok 简化实体类-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
             <!-- lucene的高亮显示 -->
             <dependency>
                 <groupId>org.apache.lucene</groupId>
                 <artifactId>lucene-highlighter</artifactId>
-                <version>4.10.2</version>
+                <version>${lucene-highlighter.version}</version>
             </dependency>
 
+            <!--Email邮件服务集成-->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-email</artifactId>
                 <version>${commons-email.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
-            </dependency>
 
+            <!--阿里云短信服务-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${sms.version}</version>
+            </dependency>
         </dependencies>
 
 
     </dependencyManagement>
     <build>
+        <finalName>MyWebApp</finalName>
         <plugins>
             <!-- java编译插件 -->
             <plugin>
