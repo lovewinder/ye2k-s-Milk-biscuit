@@ -25,7 +25,7 @@ public class UserController {
 						HttpSession session){
 		if("admin@lookup.com".equals(username)&&"123".equals(password)){
 			User user = new User();
-			user.setUsername(username);
+			user.setUserName(username);
 			user.setPassword(password);
 			session.setAttribute("users", user);
 			return "redirect:/index";
