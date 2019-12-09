@@ -395,8 +395,9 @@
       $(".main-mbd-ul").on("click", ".chapter", function () {
         sectionRender($(this))
         var index = $(this).parent().index()
+        console.log(index);
         $(".main-mbd-ul .section").eq(index).toggle();
-        if ($(".main-mbd-ul .section").css("display") == "block") {
+        if ($(".main-mbd-ul .section").eq(index).css("display") == "block") {
           $(".btn-add-section").removeClass("hidden")
           $(".btn-add-section").attr("cid", $(this).attr("cid"))
         } else {
@@ -404,6 +405,7 @@
           $(".btn-add-section").attr("cid", $(this).attr("cid"))
         }
         purl[3] = $(this).find("button .chapterName").text().replace(new RegExp(" ", "g"), "")
+        console.log(purl);
       })
 
 
@@ -530,12 +532,9 @@
             validatorsection.resetForm(true)
           }
         })
-      })
 
-      $(".save-addSection").on("click", function () {
         var formData = new FormData()
         formData.append("file", file)
-        var mdurl = purl.join("/");
         var dir = []
         for (var i = 0; i < purl.length - 1; i++) {
           dir.push(purl[i]);
@@ -562,6 +561,10 @@
             }
           },
         })
+      })
+
+      $(".save-addSection").on("click", function () {
+        
       })
 
 

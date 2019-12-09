@@ -141,9 +141,9 @@ public class MyBookcaseController {
             if (!tempdir.exists()) {
                 tempdir.mkdirs();
             }
-           // File newFile = new File(path2);
+           File newFile = new File(path2);
             try {
-                file.transferTo(tempdir);
+                file.transferTo(newFile);
             } catch (IOException e) {
                 resultInfo = new ResultInfo(false, null, "文件传输错误");
             }
