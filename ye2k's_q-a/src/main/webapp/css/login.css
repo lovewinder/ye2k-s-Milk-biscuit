@@ -126,7 +126,7 @@ body{
   z-index:3;
 }
 .card--welcome .card-title{
-    color:#ee9ca7;
+    color:#fbbc05;
   }
 .card--welcome .btn-wrap{
     display:flex;
@@ -142,26 +142,26 @@ body{
     }
 .card--welcome .btn-register{
     margin-bottom:.8em;
-    background-color:#ee9ca7;
+    background-color:#fbbc05;
   }
 .card--welcome .btn-register:hover{
-      color:#ee9ca7;
+      color:#fbbc05;
     }
 .card--welcome .btn-login{
     background-color:#a7bfe8;
   }
 .card--register .card-title{
-    color:#ee9ca7;
+    color:#fbbc05;
   }
 .card--register .badge{
-    background-color:#ee9ca7;
+    background-color:#fbbc05;
   }
 .card--register .btn{
-    background-color:#ee9ca7;
+    background-color:#fbbc05;
   }
 .card--register .btn:hover{
 			background-color:#fff;
-			color:#ee9ca7 !important;
+			color:#fbbc05 !important;
 			font-weight:bold;
 			border:2px solid rgba(238,156,167,.25);
 		}
@@ -169,7 +169,7 @@ body{
       box-shadow:0 0 0 0.2rem rgba(238,156,167,.25);
     }
 .card--register .form-control{
-    color:#ee9ca7;
+    color:#fbbc05;
     border-color:rgba(238,156,167,.25);
   }
 .card--register .form-control:focus{
@@ -201,7 +201,7 @@ body{
       box-shadow:0 0 0 0.2rem rgba(167,191,232,.25);
     }
 body{
-	background:linear-gradient(to right, #ffdde1, #ee9ca7, #a7bfe8, #6190e8);
+	background:linear-gradient(to right, #6190e8, #6190e8, #a7bfe8, #6190e8);
   background-size:500% 500%;
   transition:background 3s ease;
   background-position:50% 50%;

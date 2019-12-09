@@ -14,13 +14,12 @@ import javax.persistence.Table;
  * @author ye2k's look-up 内测小组
  * @date 2019-12
  */
-@Table(name = "tab_bookCase")
 
-@Table(name = "tab_bookcase")
+@Table(name = "tab_bookCase")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookInCase extends BaseEntity {
+public class BookInCase {
     @Id
     @GeneratedValue(generator = "JDBC")
     /**

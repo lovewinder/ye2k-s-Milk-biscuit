@@ -11,18 +11,18 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
 
-@Table(name = "tab_bookcasechapter")
+
 /**
  * 图书章节???or书签
  *
  * @author ye2k's look-up 内测小组
  * @date 2019-12
  */
-@Table(name = "tab_bookCase")
+@Table(name = "tab_bookcasechapter")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookCaseChapter extends BaseEntity {
+public class BookCaseChapter{
 
     @Id
     @GeneratedValue(generator = "JDBC")
@@ -42,27 +42,12 @@ public class BookCaseChapter extends BaseEntity {
      */
     private String createTime;
 
+    @Transient
+    private Integer containSections;
+
     public BookCaseChapter(String chapterName, Integer bid, String createTime) {
         this.chapterName = chapterName;
         this.bid = bid;
         this.createTime = createTime;
     }
-
-    public BookCaseChapter() {
-    }
-
-    private String chapterName;
-    private Integer bid;// 所属的书的编号
-    private String createTime;
-
-    public Integer getContainSections() {
-        return containSections;
-    }
-
-    public void setContainSections(Integer containSections) {
-        this.containSections = containSections;
-    }
-
-    @Transient
-    private Integer containSections;
 }

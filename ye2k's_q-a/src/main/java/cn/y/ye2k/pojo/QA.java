@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class QA extends BaseEntity {
+public class QA{
     @Id
     @GeneratedValue(generator = "JDBC")
     /**
