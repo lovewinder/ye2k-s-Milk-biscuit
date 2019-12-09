@@ -1,12 +1,10 @@
-package cn.y.ye2k.web;
+package cn.y.ye2k.bookcase.controller;
 
 import cn.y.ye2k.pojo.BookCaseChapter;
 import cn.y.ye2k.pojo.BookCaseSection;
 import cn.y.ye2k.pojo.BookInCase;
 import cn.y.ye2k.pojo.ResultInfo;
-import cn.y.ye2k.service.BookInCaseService;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
+import cn.y.ye2k.bookcase.service.BookInCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

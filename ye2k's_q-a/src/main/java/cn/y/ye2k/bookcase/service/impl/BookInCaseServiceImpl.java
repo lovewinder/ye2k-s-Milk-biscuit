@@ -1,10 +1,10 @@
-package cn.y.ye2k.service.impl;
+package cn.y.ye2k.bookcase.service.impl;
 
-import cn.y.ye2k.mapper.BookInCaseMapper;
+import cn.y.ye2k.bookcase.mapper.BookInCaseMapper;
 import cn.y.ye2k.pojo.BookCaseChapter;
 import cn.y.ye2k.pojo.BookCaseSection;
 import cn.y.ye2k.pojo.BookInCase;
-import cn.y.ye2k.service.BookInCaseService;
+import cn.y.ye2k.bookcase.service.BookInCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +20,7 @@ public class BookInCaseServiceImpl implements BookInCaseService {
     public List<BookInCase> findBooksByCase(String type) {
         List<BookInCase> bookInCases = bookInCaseMapper.findBooksByType(type);
         return bookInCases;
+
     }
 
 
@@ -36,18 +37,21 @@ public class BookInCaseServiceImpl implements BookInCaseService {
             bccs.get(i).setContainSections(count);
         }
         return bccs;
+
     }
 
     @Override
     public List<BookCaseSection> showSection(Integer cid) {
         List<BookCaseSection> bcss = bookInCaseMapper.showSection(cid);
         return bcss;
+
     }
 
     @Override
     public String findMdUrlBySid(Integer sid) {
         String url = bookInCaseMapper.findMdUrlBySid(sid);
         return url;
+
     }
 
     @Override

@@ -1,4 +1,4 @@
-package cn.y.ye2k.mapper;
+package cn.y.ye2k.bookcase.mapper;
 
 import cn.y.ye2k.pojo.BookCaseChapter;
 import cn.y.ye2k.pojo.BookCaseSection;

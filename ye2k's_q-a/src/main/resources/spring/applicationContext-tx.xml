@@ -25,7 +25,7 @@
 
     <!--配置AOP-->
     <aop:config>
-        <aop:pointcut id="pt1" expression="execution(* cn.y.ye2k.service.impl.*.*(..))"/>
+        <aop:pointcut id="pt1" expression="execution(* cn.y.ye2k.bookcase.service.impl.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"/>
     </aop:config>
 </beans>

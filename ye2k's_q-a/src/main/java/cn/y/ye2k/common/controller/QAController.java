@@ -1,4 +1,4 @@
-package cn.y.ye2k.web;
+package cn.y.ye2k.common.controller;
 
 import cn.y.ye2k.pojo.QA;
 import cn.y.ye2k.pojo.ResultInfo;

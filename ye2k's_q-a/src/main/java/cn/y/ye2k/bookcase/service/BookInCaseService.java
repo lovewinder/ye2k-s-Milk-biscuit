@@ -1,4 +1,4 @@
-package cn.y.ye2k.service;
+package cn.y.ye2k.bookcase.service;
 
 import cn.y.ye2k.pojo.BookCaseChapter;
 import cn.y.ye2k.pojo.BookCaseSection;

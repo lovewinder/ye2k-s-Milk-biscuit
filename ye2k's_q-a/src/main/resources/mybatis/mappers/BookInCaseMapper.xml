@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="cn.y.ye2k.mapper.BookInCaseMapper">
+<mapper namespace="cn.y.ye2k.bookcase.mapper.BookInCaseMapper">
 
     <select id="findBooksByType" resultType="BookInCase">
       select * from tab_bookcase where type = #{type}
