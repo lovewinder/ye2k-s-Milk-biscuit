@@ -33,13 +33,11 @@
 
     .main-mbd {
       width: 80%;
-      /* background-color: #ccc; */
+      background-color: #ccc;
       position: absolute;
       left: 20%;
       top: 0;
       padding: 5% 7%;
-      background: url("./images/changePic/cp03.jpg") no-repeat;
-      background-size: cover;
     }
 
     .home-mbd {
@@ -144,7 +142,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      padding:10% 5%; 
+      padding:10% 5%;
       overflow: auto;
     }
 
@@ -281,7 +279,7 @@
       <div class="chapter" cid="{{v.cid}}">
         <button class="btn btn-primary" type="button" >
           <i class="glyphicon glyphicon-leaf"></i><span class="chapterName"> {{v.chapterName}} </span><span class="badge upload">{{v.containSections}}</span>
-          
+
         </button>
       </div>
       <ul class="section" cid="{{v.cid}}" style="display:none">
@@ -292,11 +290,11 @@
   </script>
 
   <script type="text/html" id="tp-section">
-    {{each data v i}}  
+    {{each data v i}}
     <li class="sectionDetial"  sid="{{v.sid}}">
         <button class="btn btn-success" type="button">
           {{v.sectionName}}
-        </button>     
+        </button>
       </li>
       {{/each}}
   </script>
@@ -564,7 +562,7 @@
       })
 
       $(".save-addSection").on("click", function () {
-        
+
       })
 
 

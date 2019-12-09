@@ -1,7 +1,6 @@
-package cn.y.ye2k.utils;
+package cn.y.ye2k.common.utils;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
