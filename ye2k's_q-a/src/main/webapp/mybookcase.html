@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <title>MyBookCase</title>
   <style>
     * {
@@ -185,7 +186,7 @@
           <ul class="second">
           </ul>
         </li>
-        <li value=""><i class="glyphicon glyphicon-star" style="color:violet"></i> 收起
+        <li value="" class="clean"><i class="glyphicon glyphicon-star" style="color:violet"></i> 收起
           <ul class="second">
           </ul>
         </li>
@@ -193,7 +194,7 @@
     </div>
   </div>
   <div class="main-mbd">
-    <div class="show">
+    <div class="showMbdMain">
       <button bid="" type="button" class="btn btn-success btn-md btn-add-chapter hidden" data-toggle="modal"
         data-target="#addChapterBtn">
         新增
@@ -203,40 +204,46 @@
         新增
       </button>
       <!-- Modal -->
-      <div class="modal fade" id="addChapterBtn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">new Chapter</h4>
-            </div>
-            <div class="modal-body">
-              ChapterName: <input type="text" class="newChapter">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default close-modal-addChapter" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary save-addChapter">Save</button>
+      <form id="chapterform">
+        <div class="form-group modal fade" id="addChapterBtn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="form-group modal-dialog" role="document">
+            <div class="form-group modal-content">
+              <div class="form-group modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">new Chapter</h4>
+              </div>
+
+              <div class="form-group modal-body">
+                ChapterName: <input type="text" class="newChapter" name="chapterNameForm">
+              </div>
+              <div class="form-group modal-footer">
+                <button type="button" class="btn btn-default close-modal-addChapter" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary save-addChapter">Save</button>
+              </div>
+
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal fade" id="addSectionBtn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
+      </form>
+      <div class="form-group modal fade" id="addSectionBtn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="form-group modal-dialog" role="document">
+          <div class="form-group modal-content">
+            <div class="form-group modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">new Chapter</h4>
             </div>
-            <div class="modal-body">
-              SectionName: <input type="text" class="newSection" style="margin-bottom:3px">
-              <br>
-              url: <label class="btn btn-default" for="newSection">上传文件</label>
-              <input type="file" id="newSection" class="newSectionUrl hidden" style="float:right">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default close-modal-addSection" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary save-addSection">Save</button>
-            </div>
+            <form id="sectionform">
+              <div class="form-group modal-body">
+                SectionName: <input type="text" class="newSection" style="margin-bottom:3px" name="sectionNameForm">
+                <br>
+                url: <label class="btn btn-default" for="newSection">上传文件</label>
+                <input type="file" id="newSection" class="newSectionUrl hidden" style="float:right">
+              </div>
+              <div class="form-group modal-footer">
+                <button type="button" class="btn btn-default close-modal-addSection" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary save-addSection">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -259,8 +266,8 @@
   <script src="./js/jquery/jquery-1.12.4.min.js"></script>
   <script src="./js/bootstrap/bootstrap.min.js"></script>
   <script src="./js/template-web.js"></script>
-  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/showdown/1.3.0/showdown.min.js"></script>
+  <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <script src="./js/css-js.js"></script>
   <script type="text/html" id="tpl">
       {{each data v i}}
@@ -301,33 +308,7 @@
       var date = new Date()
       var newDate = date.toLocaleString("chinese")
 
-      $(".main-mbd .save-addChapter").on("click", function () {
-        var bid = $(this).attr("bid")
-        console.log(this);
 
-
-        var chapterName = $(".main-mbd .newChapter").val()
-        $.ajax({
-          url: "/myBookcase/addChapterToBook",
-          type: "post",
-          data: {
-            bid: bid,
-            chapterName: chapterName,
-            createTime: newDate
-          },
-          dataType: "json",
-          success: function (resultInfo) {
-            if (resultInfo.flag) {
-              console.log("新增成功");
-              $(".main-mbd .newChapter").val("")
-              $(".close-modal-addChapter").trigger("click")
-              $(".sorts .second li[bid=" + bid + "]").trigger("click")
-            } else {
-              console.log("新增失败");
-            }
-          }
-        })
-      }.bind($(".btn-add-chapter")))
       $(function () {
         $(".sorts .first>li").on("click", function () {
           var data = $(this).attr("value")
@@ -362,6 +343,7 @@
           $(".btn-add-chapter").attr("bid", $(this).attr("bid"))
           chapterRender($(this))
           purl[2] = $(this).text().replace(new RegExp(" ", "g"), "")
+          $(".showMbdMain").css("display", "block")
 
         })
       })
@@ -413,9 +395,7 @@
       $(".main-mbd-ul").on("click", ".chapter", function () {
         sectionRender($(this))
         var index = $(this).parent().index()
-        console.log(index);
         $(".main-mbd-ul .section").eq(index).toggle();
-        console.log($(".main-mbd-ul .section").css("display"));
         if ($(".main-mbd-ul .section").css("display") == "block") {
           $(".btn-add-section").removeClass("hidden")
           $(".btn-add-section").attr("cid", $(this).attr("cid"))
@@ -423,9 +403,7 @@
           $(".btn-add-section").addClass("hidden")
           $(".btn-add-section").attr("cid", $(this).attr("cid"))
         }
-
         purl[3] = $(this).find("button .chapterName").text().replace(new RegExp(" ", "g"), "")
-        console.log(purl);
       })
 
 
@@ -493,11 +471,6 @@
         }
       })
 
-      $(".main-mbd-ul").on("click", "#upload", function (e) {
-        e.stopPropagation();
-        console.log("hi");
-      })
-
       // 上传的文件
       var file
 
@@ -506,8 +479,15 @@
         console.log(file);
       })
 
-      $(".save-addSection").on("click", function () {
 
+
+      $("#sectionform").on("success.form.bv", function (e) {
+        e.preventDefault()
+        if ($(".newSection").val().trim().length == 0) {
+          validatorsection.updateStatus("sectionNameForm", "INVALID", "notEmpty")
+        } else {
+          $(".save-addChapter").prop("disabled", "false")
+        }
 
         var cid = $(".btn-add-section").attr("cid")
         var arr = $(".newSectionUrl").val().split("\\");
@@ -547,6 +527,7 @@
             $(".close-modal-addSection").trigger("click")
             $(".chapter[cid=" + cid + "]").trigger("click")
             $(".chapter[cid=" + cid + "]").trigger("click")
+            validatorsection.resetForm(true)
           }
         })
       })
@@ -585,11 +566,92 @@
 
 
       $(".first li").on("click", function () {
-        console.log($(this).attr("value"));
         purl[1] = $(this).attr("value").replace(new RegExp(" ", "g"), "")
-        console.log(purl);
       })
 
+      // 点击收起时清空show div
+      $(".clean").on("click", function () {
+        $(".showMbdMain").css("display", "none")
+      })
+
+      // 添加校验
+      $("#chapterform").bootstrapValidator({
+        feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+          chapterNameForm: {
+            validators: {
+              notEmpty: {
+                message: "chapterName不能为空"
+              }
+            }
+          }
+        }
+      })
+
+      $("#sectionform").bootstrapValidator({
+        feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+          sectionNameForm: {
+            validators: {
+              notEmpty: {
+                message: "sectionNameForm不能为空"
+              }
+            }
+          }
+        }
+      })
+
+      var validator = $("#chapterform").data('bootstrapValidator')
+      var validatorsection = $("#sectionform").data('bootstrapValidator')
+
+      $("#chapterform").on("success.form.bv", function (e) {
+        e.preventDefault()
+        console.log("hi");
+        if ($(".newChapter").val().trim().length == 0) {
+          validator.updateStatus("chapterNameForm", "INVALID", "notEmpty")
+        } else {
+          $(".save-addChapter").prop("disabled", "false")
+        }
+
+        // 这波操作...
+        var sbt = function () {
+          var bid = $(".btn-add-chapter").attr("bid")
+          var chapterName = $(".main-mbd .newChapter").val()
+          $.ajax({
+            url: "/myBookcase/addChapterToBook",
+            type: "post",
+            data: {
+              bid: bid,
+              chapterName: chapterName,
+              createTime: newDate
+            },
+            dataType: "json",
+            success: function (resultInfo) {
+              if (resultInfo.flag) {
+                console.log("新增成功");
+                $(".main-mbd .newChapter").val("")
+                $(".close-modal-addChapter").trigger("click")
+                $(".sorts .second li[bid=" + bid + "]").trigger("click")
+
+              } else {
+                console.log("新增失败");
+              }
+            },
+            complete: function () {
+              validator.resetForm(true)
+            }
+          })
+        }
+        sbt();
+      })
 
     })
   </script>
