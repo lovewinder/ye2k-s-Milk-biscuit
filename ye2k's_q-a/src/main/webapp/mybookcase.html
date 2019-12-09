@@ -230,7 +230,7 @@
             <div class="modal-body">
               SectionName: <input type="text" class="newSection" style="margin-bottom:3px">
               <br>
-              url:  <label class="btn btn-default" for="newSection">上传文件</label>
+              url: <label class="btn btn-default" for="newSection">上传文件</label>
               <input type="file" id="newSection" class="newSectionUrl hidden" style="float:right">
             </div>
             <div class="modal-footer">
@@ -400,7 +400,11 @@
           },
           url: "/myBookcase/showSection",
           success: function (info) {
-            ele.parent().children(".section").html(template("tp-section", info))
+            if (info.flag) {
+              ele.parent().children(".section").html(template("tp-section", info))
+            } else {
+              console.log("error");
+            }
           }
         })
       }
@@ -408,9 +412,18 @@
       // 点击Chapter,显示对应的Section
       $(".main-mbd-ul").on("click", ".chapter", function () {
         sectionRender($(this))
-        $(".main-mbd-ul .section").toggle();
-        $(".btn-add-section").toggleClass("hidden")
-        $(".btn-add-section").attr("cid", $(this).attr("cid"))
+        var index = $(this).parent().index()
+        console.log(index);
+        $(".main-mbd-ul .section").eq(index).toggle();
+        console.log($(".main-mbd-ul .section").css("display"));
+        if ($(".main-mbd-ul .section").css("display") == "block") {
+          $(".btn-add-section").removeClass("hidden")
+          $(".btn-add-section").attr("cid", $(this).attr("cid"))
+        } else {
+          $(".btn-add-section").addClass("hidden")
+          $(".btn-add-section").attr("cid", $(this).attr("cid"))
+        }
+
         purl[3] = $(this).find("button .chapterName").text().replace(new RegExp(" ", "g"), "")
         console.log(purl);
       })
