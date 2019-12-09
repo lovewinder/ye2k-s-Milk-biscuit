@@ -11,7 +11,7 @@
    </select>
 
     <insert id="addChapterToBook">
-        insert into tab_bookCaseChapter(
+        insert into tab_bookcasechapter(
         chapterName,bid,createTime)
           values
         (#{chapterName},#{bid},#{createTime})

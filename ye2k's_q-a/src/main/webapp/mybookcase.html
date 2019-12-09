@@ -29,6 +29,7 @@
     .aslid-mbd {
       width: 20%;
       background-color: #000;
+      overflow: auto;
     }
 
     .main-mbd {
@@ -305,8 +306,7 @@
     $(function () {
       // 拼接url
       var purl = ["/md"]
-      var date = new Date()
-      var newDate = date.toLocaleString("chinese")
+
 
 
       $(function () {
@@ -504,6 +504,9 @@
         // formData.append("mdurl", mdurl)
         // formData.append("createTime", newDate)
         // formData.append("file", file)
+        var date = new Date()
+        var newDate = date.toLocaleString("chinese", { hour12: false })
+        console.log(newDate);
         $.ajax({
           type: "post",
           dataType: "json",
@@ -564,7 +567,7 @@
       })
 
       $(".save-addSection").on("click", function () {
-        
+
       })
 
 
@@ -626,6 +629,9 @@
 
         // 这波操作...
         var sbt = function () {
+          var date = new Date()
+          var newDate = date.toLocaleString("chinese", { hour12: false })
+          console.log(newDate);
           var bid = $(".btn-add-chapter").attr("bid")
           var chapterName = $(".main-mbd .newChapter").val()
           $.ajax({
