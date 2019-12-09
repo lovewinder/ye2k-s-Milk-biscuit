@@ -43,11 +43,8 @@ public class Question_Answer {
     }
 
     public static void main(String[] args) throws IOException {
-    //    System.out.println(Question_Answer.readTxt("D:\\work_space\\ye2k's_q-a\\ye2k's_q-a\\target\\travel-1.0-SNAPSHOT\\txt\\question\\ajax.txt"));
-  //      System.out.println(Question_Answer.parseQA(Question_Answer.readTxt("D:\\work_space\\ye2k's_q-a\\ye2k's_q-a\\target\\travel-1.0-SNAPSHOT\\txt\\question\\ajax.txt")));
-//        String path = (new Question_Answer().getClass().getResource("/").getPath().replaceFirst("/", "").replace("classes","")+"travel-1.0-SNAPSHOT/txt/question/ajax.txt");
-//        String str = readTxt(path);
-//        Map<String, String> map = parseQA(str);
-//        System.out.println(map);
+        String md = Question_Answer.readTxt("d:/test.md");
+        System.out.println(md);
     }
+
 }

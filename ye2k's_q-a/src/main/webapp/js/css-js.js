@@ -37,4 +37,12 @@
   $(".main-mbd").css({
     "height": pheight
   })
+
+  $(".main-mbd-ul .show").css({
+    "height": pheight
+  })
+
+  $("#article").css({
+    "height": pheight
+  })
 })()

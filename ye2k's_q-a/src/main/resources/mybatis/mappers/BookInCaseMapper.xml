@@ -7,11 +7,7 @@
 <mapper namespace="cn.y.ye2k.mapper.BookInCaseMapper">
 
     <select id="findBooksByType" resultType="BookInCase">
-      select * from tab_bookCase where type = #{type}
-   </select>
-
-    <select id="findBooksByBid" resultType="BookCaseChapter">
-      select * from tab_bookCaseChapter where bid = #{bid}
+      select * from tab_bookcase where type = #{type}
    </select>
 
     <insert id="addChapterToBook">
@@ -20,4 +16,28 @@
           values
         (#{chapterName},#{bid},#{createTime})
     </insert>
+
+    <select id="showChapter" resultType="BookCaseChapter">
+      select * from tab_bookcasechapter where bid = #{bid}
+   </select>
+
+    <select id="countSection" resultType="Integer">
+      select count(*) from tab_bookcasesection where cid = #{cid}
+   </select>
+
+    <select id="showSection" resultType="BookCaseSection">
+      select * from tab_bookcasesection where cid = #{cid}
+   </select>
+
+    <select id="findMdUrlBySid" resultType="String">
+      select mdurl from tab_bookcasesection where sid = #{sid}
+   </select>
+
+    <insert id="addSection">
+        insert into tab_bookcasesection(
+        sectionName,cid,mdurl,createTime)
+          values
+        (#{sectionName},#{cid},#{mdurl},#{createTime})
+    </insert>
+
 </mapper>

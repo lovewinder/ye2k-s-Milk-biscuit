@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "tab_bookCase")
+@Table(name = "tab_bookcase")
 @Data
 public class BookInCase {
     @Id
