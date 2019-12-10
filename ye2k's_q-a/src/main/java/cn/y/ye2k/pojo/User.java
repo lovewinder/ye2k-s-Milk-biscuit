@@ -4,6 +4,7 @@ package cn.y.ye2k.pojo;
 import cn.y.ye2k.common.pojo.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.GeneratedValue;
@@ -16,11 +17,12 @@ import javax.persistence.Table;
  * @author ye2k's look-up 内测小组
  * @date 2019-12-08
  */
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "TAB_USER")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User{
+public class User extends BaseEntity{
 
     @Id
     @GeneratedValue(generator = "JDBC")
@@ -67,12 +69,12 @@ public class User{
 
 
 }
+
 /**
- * 建表语句
  * CREATE TABLE `TAB_USER` (
- *   `UM_ID` varchar(20) NOT NULL COMMENT '系统账号',
+ *   `UM_ID` varchar(36) NOT NULL COMMENT '系统账号',
  *   `USER_NAME` varchar(50) NOT NULL COMMENT '用户名',
- *   `PASSWORD` varchar(20) NOT NULL COMMENT '密码',
+ *   `PASSWORD` varchar(32) NOT NULL COMMENT '密码',
  *   `SEX` varchar(1) DEFAULT NULL COMMENT '性别,M男性,F女性',
  *   `BIRTH_DATE` date DEFAULT NULL COMMENT '出生日期',
  *   `ORG_ID` varchar(6) DEFAULT NULL COMMENT '组织编号',

@@ -2,6 +2,7 @@ package cn.y.ye2k.user.controller;
 
 import cn.y.ye2k.pojo.User;
 import cn.y.ye2k.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,16 +18,17 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
-	@Resource
-	private UserService userServiceImpl;
+	@Autowired
+	private UserService userService;
 	@RequestMapping(value = "/login",method=RequestMethod.POST)
-	public String login(@RequestParam(value = "username") String username,
+	public String login(@RequestParam(value = "username") String userName,
 						@RequestParam(value = "password") String password,
 						HttpSession session){
-		if("admin@lookup.com".equals(username)&&"123".equals(password)){
-			User user = new User();
-			user.setUserName(username);
-			user.setPassword(password);
+		User user = new User();
+		user.setUserName(userName);
+		user.setPassword(password);
+		User loginUserInfo = this.userService.login(user);
+		if(null!=loginUserInfo){
 			session.setAttribute("users", user);
 			return "redirect:/index";
 		}else{

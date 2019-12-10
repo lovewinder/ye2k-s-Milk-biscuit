@@ -7,8 +7,7 @@ import org.apache.ibatis.annotations.Select;
  * @author ye2k's look-up 内测小组
  * @date 2019-12-08
  */
-
 public interface UserMapper {
-	@Select("select * from users where username=#{username} and password=#{password}")
+	@Select("SELECT * FROM TAB_USER WHERE USER_NAME=#{userName} AND PASSWORD=#{password}")
 	User selUserByNameAndPwd(User users);
 }
