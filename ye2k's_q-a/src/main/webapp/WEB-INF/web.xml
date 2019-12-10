@@ -53,7 +53,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>look-up.html</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <!--全局500异常页面-->
     <error-page>
