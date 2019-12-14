@@ -145,14 +145,14 @@
       position: absolute;
       left: 0;
       top: 0;
-      padding:10% 5%; 
+      padding:10% 8% 10% 5%; 
       overflow: auto;
     }
 
     #article .quit-article{
       position: fixed;
       right: 5%;
-      top: 3%;
+      top: 1%;
       width: 15%;
     }
 
@@ -255,7 +255,7 @@
   </div>
 
   <div id="article" style="display:none">
-    <button class="btn btn-warning quit-article">
+    <button class="btn btn-warning quit-article" >
       back
     </button>
     <button class="btn btn-success up-article">
@@ -428,6 +428,8 @@
             var u = arr[arr.length - 1]
             // 要求获取的文件的后缀名必须是以.md结尾的
             if (u == "md") {
+              console.log(info.data);
+              $("#article .article-entry").html("")
               renderMD(info.data)
             } else {
               $("#article .article-entry").html("获取的md文件有误")
@@ -634,6 +636,7 @@
           console.log(newDate);
           var bid = $(".btn-add-chapter").attr("bid")
           var chapterName = $(".main-mbd .newChapter").val()
+          console.log(chapterName);
           $.ajax({
             url: "/myBookcase/addChapterToBook",
             type: "post",
