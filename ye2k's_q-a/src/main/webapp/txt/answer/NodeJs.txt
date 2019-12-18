@@ -37,3 +37,7 @@
 37[sp](1) npm i nrm -g<br>(2) nrm ls: 列出所有可用的仓库地址<br>(3) nrm use taobao[or]
 38[sp](1) nodemon可以执行js文件<br>(2) 它会监听当前目录,当发现目录下的代码被修改,它会重新执行js文件<br>[or]
 39[sp](1) const url = require("url")<br>(2) url.parse("/del?id=2&a=a",true/默认false)<br>[1] search: "?id=2&a=a"<br>[2] query: "id=2&a=a<br>[3] pathname="/del"<br>[4] 第二个参数为true时,会将url中的参数以对象的方式返回给query属性<br>{id: "2", a: "a"}<br>可以使用解构方式来接收query属性中的每个参数[or]
+40[sp](1) 在node中,创建的每个js文件都可以认为是一个独立的模块<br>(2) 每个模块都有独立的作用域<br>(3) module变量代表就是当前模块<br>[1] module.exports表示当前模块要导出的内容<br>(4)使用require("模块名")引入,并用一个变量接收,这个变量就可以调用exports导出的内容[or]
+41[sp]当导出时,只看module.exports指向的内容<br>原本它们都是指向同一块内存,不管是哪个exports改变了指向的内容,都会导致全局的exports失效[or]
+42[sp](1) 自定义模块,require(js文件路径)<br>会去js文件路径去找这个自定义模块,如果有这个文件,导入成功,如果没有这个文件,导入失败<br>(2) 核心模块<br>导入时,判断模块名是不是核心模块,如果是核心模块,就导入成功<br>(3) 第三方模块导入<br>[1] 首先找当前目录下的node_modules目录<br>[2] 然后再找对应模块名的目录<br>[3] 如果目录找到了,会找目录下的一个package.json文件<br>[4] 如果找到,会看它有没有main这个属性,如果有,会导入main对应的js文件<br>[5] 如果找不到main或main指定的文件,默认会导入当前目录下的index.js<br>[6]如果连node_modules目录都找不到,会往上一级目录查找(全局安装)[or]
+43[sp]按照一定规则,将你引到一个具体的方法(函数),本身不做任何的处理[or]

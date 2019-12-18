@@ -395,7 +395,6 @@
       $(".main-mbd-ul").on("click", ".chapter", function () {
         sectionRender($(this))
         var index = $(this).parent().index()
-        console.log(index);
         $(".main-mbd-ul .section").eq(index).toggle();
         if ($(".main-mbd-ul .section").eq(index).css("display") == "block") {
           $(".btn-add-section").removeClass("hidden")
@@ -405,7 +404,6 @@
           $(".btn-add-section").attr("cid", $(this).attr("cid"))
         }
         purl[3] = $(this).find("button .chapterName").text().replace(new RegExp(" ", "g"), "")
-        console.log(purl);
       })
 
 

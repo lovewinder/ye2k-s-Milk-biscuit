@@ -165,6 +165,7 @@ public class MyBookcaseController {
                 resultInfo = new ResultInfo(false, null, "文件传输错误");
             }
         } catch (Exception e) {
+            e.printStackTrace();
             resultInfo = new ResultInfo(false, null, "服务器繁忙");
         }
         System.out.println(file);
