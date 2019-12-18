@@ -36,3 +36,4 @@
 36[sp]本地安装和全局安装是什么?[or]
 37[sp]如何使用taobao镜像?[or]
 38[sp]怎么使用nodemon?[or]
+39[sp]怎么使用url模块?[or]

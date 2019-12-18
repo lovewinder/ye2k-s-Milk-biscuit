@@ -36,3 +36,4 @@
 36[sp](1) 本地安装: 每个项目要的第三方包是不一样的,所以一般每个项目依赖都是安装在当前项目文件夹中<br>(2) 全局安装: npm, node这些命令行工具一般都是全局安装的,只要安装一次,在任何项目下都能使用<br>[1] npm install 包名 -g[or]
 37[sp](1) npm i nrm -g<br>(2) nrm ls: 列出所有可用的仓库地址<br>(3) nrm use taobao[or]
 38[sp](1) nodemon可以执行js文件<br>(2) 它会监听当前目录,当发现目录下的代码被修改,它会重新执行js文件<br>[or]
+39[sp](1) const url = require("url")<br>(2) url.parse("/del?id=2&a=a",true/默认false)<br>[1] search: "?id=2&a=a"<br>[2] query: "id=2&a=a<br>[3] pathname="/del"<br>[4] 第二个参数为true时,会将url中的参数以对象的方式返回给query属性<br>{id: "2", a: "a"}<br>可以使用解构方式来接收query属性中的每个参数[or]
