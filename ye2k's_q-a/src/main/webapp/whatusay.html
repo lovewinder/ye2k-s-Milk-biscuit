@@ -133,9 +133,7 @@
         dataType: "json",
         success: function (res) {
           say.messages = []
-          console.log(res);
           res.data.forEach(element => {
-            console.log(element);
             say.messages.push(element)
           });
         }
@@ -168,7 +166,6 @@
                 createTime: newDate
               }
             }).then(function (res) {
-              console.log(res);
               say.content = ""
               render()
             }, function () {

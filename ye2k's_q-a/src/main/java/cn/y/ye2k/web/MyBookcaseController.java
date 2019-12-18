@@ -143,15 +143,24 @@ public class MyBookcaseController {
             String path2 = path.replace("/WEB-INF/classes/", "");
             String fileName = file.getOriginalFilename();
             // path2 = path2.replaceFirst("/","");
+            String pathMd = "/home/ubuntu/ye2k/mybookcase";
             path2 = path2 + mdurl;
-            File tempdir = new File(path2);
+            pathMd = pathMd + mdurl;
+            File tempdir = new File(pathMd);
+            File tempdirOut = new File(path2);
 
             if (!tempdir.exists()) {
                 tempdir.mkdirs();
             }
-            File newFile = new File(path2);
+            if (!tempdirOut.exists()) {
+                tempdirOut.mkdirs();
+            }
+            File newFile = new File(pathMd);
+            File newFileOut = new File(path2);
+
             try {
                 file.transferTo(newFile);
+                file.transferTo(newFileOut);
             } catch (IOException e) {
                 resultInfo = new ResultInfo(false, null, "文件传输错误");
             }
