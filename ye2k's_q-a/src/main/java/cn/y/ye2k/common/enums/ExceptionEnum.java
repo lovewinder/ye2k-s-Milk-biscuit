@@ -14,7 +14,7 @@ public enum ExceptionEnum {
     //第一个参数http状态码.第二个参数提示信息
     PRICE_CANNOT_BE_NULL(400, "请求参数错误！"),
     DATA_TRANSFER_ERROR(500, "服务器宕机!"),
-    CATEGORY_NOT_FOND(204, "数据未找到");
+    CATEGORY_NOT_FOND(204, "数据未找到"), SEND_MESSAGE_ERROR(500,"短信发送失败");
 
     /**
      * 封装http状态码

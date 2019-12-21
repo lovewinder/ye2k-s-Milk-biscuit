@@ -36,7 +36,7 @@ public class Question_Answer {
         Map<Integer, String> map = new LinkedHashMap<>();
         for (int i = 0; i < strs.length; i++) {
             map.put(Integer.parseInt(strs[i].split("\\[sp\\]")[0]), strs[i].split("\\[sp\\]")[1]);
-            // System.out.println(strs[i].split("\\[sp\\]")[0]);
+            // SystemController.out.println(strs[i].split("\\[sp\\]")[0]);
         }
         return map;
     }

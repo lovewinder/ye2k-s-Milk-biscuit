@@ -4,14 +4,14 @@ import cn.y.ye2k.bookcase.mapper.BookInCaseMapper;
 import cn.y.ye2k.pojo.BookCaseChapter;
 import cn.y.ye2k.pojo.BookCaseSection;
 import cn.y.ye2k.pojo.BookInCase;
-import cn.y.ye2k.bookcase.service.BookInCaseService;
+import cn.y.ye2k.bookcase.service.IBookInCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class BookInCaseServiceImpl implements BookInCaseService {
+public class IBookInCaseServiceImpl implements IBookInCaseService {
 
     @Autowired
     BookInCaseMapper bookInCaseMapper;

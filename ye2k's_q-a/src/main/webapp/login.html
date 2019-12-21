@@ -40,13 +40,16 @@
 				<p>或者使用您的电子邮箱进行注册</p>
 				<form>
 					<div class="form-group">
-						<input class="form-control" type="text" placeholder="名称" required="required"/>
-					</div>
-					<div class="form-group">
 						<input class="form-control" type="email" placeholder="邮箱" required="required"/>
 					</div>
 					<div class="form-group">
-						<input class="form-control" type="password" placeholder="密码" required="required"/>
+						<input class="form-control" type="password" id="password" placeholder="密码" required="required"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="password" id="confirmPassword" placeholder="确认密码" required="required"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" id="verifyCode" placeholder="验证码" required="required"/>
 					</div>
 					<button class="btn btn-lg">注册</button>
 				</form>
@@ -60,12 +63,20 @@
 				<p>第三方登录</p>
 				<p class="badge-wrap"><a class="badge"><i class="fab fa-qq"></i></a><a class="badge"><i class="fab fa-weixin"></i></a><a class="badge"><i class="fab fa-github"></i></a></p>
 				<p>或用邮箱登录</p>
-				<form action="login" method="post">
+				<form action="user/login" method="post">
 					<div class="form-group">
 						<input class="form-control" type="email"  name="username" placeholder="邮箱" value="admin@lookup.com"  required="required"/>
 					</div>
 					<div class="form-group">
 						<input class="form-control" type="password" name="password" placeholder="密码" required="required"/>
+					</div>
+					<div class="form-group">
+						<!--页面一加载就向checkCodeServlet发送请求 this 表示img标签-->
+						验证码:<img src="/system/verifyCode" alt="验证码" onclick="checkCode(this);" style="cursor: pointer"><br/>
+						<input class="form-control" type="text" name="loginVerifyCode" id="loginVerifyCode" placeholder="验证码" required="required"/>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" name="remembPassword"/>记住密码
 					</div>
 					<p><a href="#">忘记密码?</a></p>
 					<input type="submit" class="btn btn-lg" onclick="loginFunction()" value="登录">
@@ -77,9 +88,22 @@
 	</div>
 	
 </div>
-<script>
-    function loginFunction() {
+<script type="text/javascript">
+    $(function(){
+        initPage();
+	});
+
+    function initPage() {
+
+    }
+
+        function loginFunction() {
         //不会写
+    }
+    //自定义函数加载验证码
+    function checkCode(obj) {
+        //向生成的servlet中加载验证码图片
+        obj.src = "/system/verifyCode?time="+new Date().getTime();
     }
 </script>
 <script src="/js/login.js"></script>

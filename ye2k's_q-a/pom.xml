@@ -104,7 +104,10 @@
             <groupId>com.github.abel533</groupId>
             <artifactId>mapper</artifactId>
         </dependency>
-
+        <dependency>
+        <groupId>com.aliyun</groupId>
+        <artifactId>aliyun-java-sdk-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

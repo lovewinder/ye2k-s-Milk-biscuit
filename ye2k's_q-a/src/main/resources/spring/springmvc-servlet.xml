@@ -37,9 +37,9 @@
             <bean class="cn.y.ye2k.interceptor.LoginInterceptor">
                 <property name="exceptUrls">
                     <list>
-                        <value>/login</value>
                         <value>/user/login</value>
                         <value>/user/register</value>
+                        <value>/system/verifyCode</value>
                     </list>
                 </property>
             </bean>

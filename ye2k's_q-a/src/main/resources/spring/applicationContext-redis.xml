@@ -20,7 +20,7 @@
 
         <!--jedis连接工厂-->
         <property name="connectionFactory" ref="jedisConnectionFactory"/>
-        <!-- 采用字符串类型的key和value序列化 -->
+        <!-- 采用字符串类型的key和value序列化!主要是为了用可视化工具看数据不乱码 -->
         <property name="keySerializer">
             <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
         </property>

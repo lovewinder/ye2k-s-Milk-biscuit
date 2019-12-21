@@ -37,7 +37,7 @@
         <jedis.version>2.9.0</jedis.version>
         <sms.version>4.1.1</sms.version>
         <pagehelper.version>5.1.6</pagehelper.version>
-        <spring-data-redis.version>2.0.7.RELEASE</spring-data-redis.version>
+        <spring-data-redis.version>1.8.4.RELEASE</spring-data-redis.version>
         <mapper.version>3.0.1</mapper.version>
         <lombok.version>1.16.10</lombok.version>
         <lucene-highlighter.version>4.10.2</lucene-highlighter.version>
@@ -111,7 +111,6 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <scope>runtime</scope>
                 <version>${mysql.version}</version>
             </dependency>
 
@@ -262,13 +261,12 @@
                 <version>${commons-email.version}</version>
             </dependency>
 
-
             <!--阿里云短信服务-->
 <!--
             <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-core</artifactId>
-                <version>${sms.version}</version>
+                <version>4.1.1</version>
             </dependency>
 -->
             <dependency>
@@ -276,7 +274,6 @@
                 <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
                 <version>1.0.0</version>
             </dependency>
-
 
             <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
             <dependency>

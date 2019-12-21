@@ -4,7 +4,7 @@ import cn.y.ye2k.pojo.BookCaseChapter;
 import cn.y.ye2k.pojo.BookCaseSection;
 import cn.y.ye2k.pojo.BookInCase;
 import cn.y.ye2k.pojo.ResultInfo;
-import cn.y.ye2k.bookcase.service.BookInCaseService;
+import cn.y.ye2k.bookcase.service.IBookInCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +22,13 @@ import java.util.List;
 public class MyBookcaseController {
 
     @Autowired
-    BookInCaseService bookInCaseService;
+    IBookInCaseService bookInCaseService;
 
     @RequestMapping("showBooks")
     @ResponseBody
     public ResultInfo showBooks(String type, HttpServletResponse response) {
         ResultInfo resultInfo = null;
-        // response.setDateHeader("Expires", System.currentTimeMillis() + 60 * 60 * 1 * 1000);
+        // response.setDateHeader("Expires", SystemController.currentTimeMillis() + 60 * 60 * 1 * 1000);
         try {
             List<BookInCase> booksByCase = bookInCaseService.findBooksByCase(type);
             resultInfo = new ResultInfo(true, booksByCase, null);
@@ -43,7 +43,7 @@ public class MyBookcaseController {
     @ResponseBody
     public ResultInfo addChapterToBook(BookCaseChapter bcc, Integer bid, HttpServletResponse response) {
         ResultInfo resultInfo = null;
-        // response.setDateHeader("Expires", System.currentTimeMillis() + 60 * 60 * 1 * 1000);
+        // response.setDateHeader("Expires", SystemController.currentTimeMillis() + 60 * 60 * 1 * 1000);
         try {
             bcc.setBid(bid);
             bookInCaseService.addChapterToBook(bcc);
@@ -59,7 +59,7 @@ public class MyBookcaseController {
     @ResponseBody
     public ResultInfo showChapter(Integer bid, HttpServletResponse response) {
         ResultInfo resultInfo = null;
-        //  response.setDateHeader("Expires", System.currentTimeMillis() + 60 * 60 * 1 * 1000);
+        //  response.setDateHeader("Expires", SystemController.currentTimeMillis() + 60 * 60 * 1 * 1000);
         try {
             List<BookCaseChapter> bccs = bookInCaseService.showChapter(bid);
             resultInfo = new ResultInfo(true, bccs, null);
@@ -73,7 +73,7 @@ public class MyBookcaseController {
     @ResponseBody
     public ResultInfo showSection(Integer cid, HttpServletResponse response) {
         ResultInfo resultInfo = null;
-        // response.setDateHeader("Expires", System.currentTimeMillis() + 60 * 60 * 1 * 1000);
+        // response.setDateHeader("Expires", SystemController.currentTimeMillis() + 60 * 60 * 1 * 1000);
         try {
             List<BookCaseSection> bcss = bookInCaseService.showSection(cid);
             resultInfo = new ResultInfo(true, bcss, null);
@@ -86,7 +86,7 @@ public class MyBookcaseController {
     @RequestMapping("findMdUrlBySid")
     @ResponseBody
     public ResultInfo findMdUrlBySid(Integer sid, HttpServletResponse response) {
-        // response.setDateHeader("Expires", System.currentTimeMillis() + 60 * 60 * 1 * 1000);
+        // response.setDateHeader("Expires", SystemController.currentTimeMillis() + 60 * 60 * 1 * 1000);
         ResultInfo resultInfo = null;
         try {
             String url = bookInCaseService.findMdUrlBySid(sid);
@@ -102,7 +102,7 @@ public class MyBookcaseController {
     @ResponseBody
     public ResultInfo addSection(Integer cid, String createTime, String sectionName, String mdurl, MultipartFile file, HttpServletResponse response) {
         ResultInfo resultInfo = null;
-        //response.setDateHeader("Expires", System.currentTimeMillis() + 60 * 60 * 1 * 1000);
+        //response.setDateHeader("Expires", SystemController.currentTimeMillis() + 60 * 60 * 1 * 1000);
         BookCaseSection section = new BookCaseSection(sectionName, cid, createTime, mdurl);
         try {
             bookInCaseService.addSection(section);
@@ -135,7 +135,7 @@ public class MyBookcaseController {
     @ResponseBody
     public ResultInfo addSectionFile(@RequestParam("dir") String dir, @RequestParam("mdurl") String mdurl, @RequestParam("file") MultipartFile file, HttpServletResponse response) {
         ResultInfo resultInfo = null;
-        // response.setDateHeader("Expires", System.currentTimeMillis() + 60 * 60 * 1 * 1000);
+        // response.setDateHeader("Expires", SystemController.currentTimeMillis() + 60 * 60 * 1 * 1000);
         try {
             String path = MyBookcaseController.class.getResource("/").getPath();
             String path2 = path.replace("/WEB-INF/classes/", "");

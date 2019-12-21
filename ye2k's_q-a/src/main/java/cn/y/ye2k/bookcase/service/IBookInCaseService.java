@@ -6,7 +6,7 @@ import cn.y.ye2k.pojo.BookInCase;
 
 import java.util.List;
 
-public interface BookInCaseService {
+public interface IBookInCaseService {
 
     List<BookInCase> findBooksByCase(String type);
 

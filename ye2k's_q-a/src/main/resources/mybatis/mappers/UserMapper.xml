@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.y.ye2k.user.mapper.UserMapper">
+    <!--根据用户id获取用户数据-->
+    <select id="queryUserById" resultType="User">
+        SELECT *,user_name as userName FROM tb_user WHERE id=#{0}
+    </select>
+    <!--查询所有用户-->
+    <select id="queryUserList" resultType="User">
+        SELECT *FROM tb_user
+    </select>
+    <!--新增用户-->
+    <!--useGeneratedKeys：开启主键自增回显，将自增长的主键值回显到形参中（即封装到User对象中）
+  		keyColumn：数据库中主键的字段名称
+  		keyProperty：pojo中主键对应的属性-->
+    <insert id="insertUser" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO `y2kapp`.`TAB_USER` (
+                `UM_ID`,
+                `USER_NAME`,
+                `PASSWORD`,
+                `SEX`,
+                `BIRTH_DATE`,
+                `ORG_ID`,
+                `ROLE_ID`,
+                `REGISTER_DATE`,
+                `QUALTFIED_TO_LINE_DATE`,
+                `IS_SYSTEM_PERMITTED`,
+                `UPDATED_BY`,
+                `UPDATED_DATE`,
+                `CREATED_BY`,
+                `CREATED_DATE`
+                )
+        VALUES
+               (
+                       REPLACE(UUID(),"-",""),
+                       #{userName},
+                       #{password},
+                       #{sex},
+                       #{birthDate},
+                       NULL,
+                       NULL,
+                       now(),
+                       now(),
+                       'N',
+                       now(),
+                       now(),
+                       now(),
+                       now()
+                       )
+    </insert>
+    <!--更新用户信息-->
+    <update id="updateUser">
+        <!--update tb_user set user_name=#{userName},password=#{password},name=#{name},age=#{age},sex=#{sex},birthday=#{birthday},updated=#{updated} WHERE id=#{id}-->
+        UPDATE mybatis . tb_user SET
+        user_name=#{userName},password=#{password},name=#{name},age=#{age},birthday=#{birthday},updated=now() WHEREid =
+        #{id}
+    </update>
+    <!--根据id删除用户信息-->
+    <delete id="deleteUserById">
+        DELETE FROM tb_user where id=#{id}
+    </delete>
+</mapper>
