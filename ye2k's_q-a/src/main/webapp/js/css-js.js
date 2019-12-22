@@ -45,4 +45,9 @@
   $("#article").css({
     "height": pheight
   })
+
+  $("#saySth").css({
+    "height": pheight
+  })
+
 })()

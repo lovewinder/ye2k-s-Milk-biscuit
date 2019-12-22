@@ -11,9 +11,10 @@ import cn.y.ye2k.sms.utils.SmsHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -24,15 +25,15 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service(value = "shortMessageService")
 public class ShortMessageServiceImpl implements IShortMessageService {
-    private final static String KEY_PREFIX = "ly:sms:phone";
+    private final static String KEY_PREFIX = "ye2k:sms:shortMessage:phone";
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Autowired
     private SmsHelper smsHelper;
 
-    @Autowired
+    @Resource(name = "smsProperties")
     private SmsProperties smsProperties;
 
 

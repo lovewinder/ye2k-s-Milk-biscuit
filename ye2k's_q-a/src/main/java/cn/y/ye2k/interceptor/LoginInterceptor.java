@@ -54,15 +54,18 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
-        //获取请求的URL
+        //本地开发用
+        return true;
+
+/*        //获取请求的URL
         String requestUri = request.getRequestURI();
         if (requestUri.startsWith(request.getContextPath())) {
             requestUri = requestUri.substring(request.getContextPath().length());
         }
         //系统根目录
-/*        if (StringUtils.equals(StringConstant.SYSTEMROOT, requestUri)) {
+*//*        if (StringUtils.equals(StringConstant.SYSTEMROOT, requestUri)) {
             return true;
-        }*/
+        }*//*
         //放行exceptUrls中配置的url
         for (String url : exceptUrls) {
             if (url.endsWith("/**")) {
@@ -80,7 +83,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         }
         response.sendRedirect("/login.html");
-        return false;
+        return false;*/
     }
 
 }

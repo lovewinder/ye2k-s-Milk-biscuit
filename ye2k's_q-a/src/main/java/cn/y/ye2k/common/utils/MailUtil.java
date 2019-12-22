@@ -36,7 +36,7 @@ public final class MailUtil {
 
     public static void main(String[] args) throws Exception {
         String toEmail = "caoleicode@foxmail.com";
-        String emailMsg = "<h2>恭喜您！注册成功！</h2><a href='http://localhost:8080/userServlet?requestMethod=active'>请点击此处激活账号</a>";
+        String emailMsg = "<h2>恭喜您！注册成功！</h2><a href='http://www.caoleiclub.com/user/active'>请点击此处激活账号</a>";
         sendMail(toEmail, emailMsg);
         System.out.println("发送成功。。。");
     }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="cn.y.ye2k.saysth.mapper.SaySthMapper">
+
+    <select id="querySaySth" resultType="SaySth">
+      select * from tab_saySth
+   </select>
+
+    <insert id="addSth">
+        insert into tab_saySth(
+        content,createTime)
+          values
+        (#{content},#{createTime})
+    </insert>
+
+</mapper>

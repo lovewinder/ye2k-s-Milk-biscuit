@@ -17,7 +17,8 @@
 
     <!--加载外部资源文件-->
     <context:property-placeholder
-            location="classpath:jdbc.properties,classpath:jedis.properties"/>
+            location="classpath:jdbc.properties,classpath:jedis.properties,classpath:sms.properties"
+            file-encoding="UTF-8"/>
 
     <!--配置数据源-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -32,8 +33,7 @@
         <property name="defaultEncoding" value="UTF-8"/>
         <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
         <property name="maxUploadSize" value="5242880"/>
-        <property name="maxInMemorySize" value="4096"/>
+        <property name="maxInMemorySize" value="10240"/>
     </bean>
-
 
 </beans>

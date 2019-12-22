@@ -13,46 +13,46 @@ import org.springframework.context.annotation.PropertySource;
  * @author caolei @date 2019/7/8 11:26
  */
 @Data
-@PropertySource(value = "classpath:sms.properties")
+//@PropertySource(value = "classpath:sms.properties",encoding = "UTF-8")
 public class SmsProperties {
     /**
      * 账号
      */
-    @Value(value = "sms.accessKeyID")
+    @Value(value = "${sms.accessKeyID}")
     private String accessKeyID;
     /**
      * 密钥
      */
-    @Value(value = "sms.accessKeySecret")
+    @Value(value = "${sms.accessKeySecret}")
     private String accessKeySecret;
     /**
      * 短信签名
      */
-    @Value(value = "sms.signName")
+    @Value(value = "${sms.signName}")
     private String signName;
     /**
      * 短信模板
      */
-    @Value(value = "sms.verifyCodeTemplate")
+    @Value(value = "${sms.verifyCodeTemplate}")
     private String verifyCodeTemplate;
     /**
      * 发送短信请求的域名
      */
-    @Value("sms.domain")
+    @Value("${sms.domain}")
     private String domain;
     /**
      * API版本
      */
-    @Value(value = "sms.version")
+    @Value(value = "${sms.version}")
     private String version;
     /**
      * API类型
      */
-    @Value(value = "sms.action")
+    @Value(value = "${sms.action}")
     private String action;
     /**
      * 区域
      */
-    @Value(value = "sms.regionID")
+    @Value(value = "${sms.regionID}")
     private String regionID;
 }
